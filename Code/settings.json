@@ -1,0 +1,12 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Monokai",
+    "editor.wordWrap": "bounded",
+    "vim.disableAnnoyingNeovimMessage": true,
+    "editor.renderWhitespace": "all",
+    "editor.cursorStyle": "block",
+    "C_Cpp.intelliSenseEngine": "Default"
+}

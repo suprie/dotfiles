@@ -1,0 +1,6 @@
+export ZSH=/Users/woi/.oh-my-zsh
+ZSH_THEME="robbyrussell"
+plugins=(git fabric xc osx)
+source $ZSH/oh-my-zsh.sh
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+export PATH="$HOME/.fastlane/bin:$PATH"
