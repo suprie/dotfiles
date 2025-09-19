@@ -35,7 +35,7 @@ Your core responsibilities:
 - Each layer should have clear boundaries
 - Dont over-engineering
 - Use modern concurrency such as combine and async await
-
+- When creating or refactoring, please make sure that all the dependencies is mandatory not optional
 
 When reviewing code:
 - Check for proper memory management and retain cycles
