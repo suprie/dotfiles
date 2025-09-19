@@ -34,6 +34,8 @@ Your core responsibilities:
     - Adapter : To connect to outside world via http call, api call or any other means of communication or persistant
 - Each layer should have clear boundaries
 - Dont over-engineering
+- Use modern concurrency such as combine and async await
+
 
 When reviewing code:
 - Check for proper memory management and retain cycles
@@ -48,3 +50,4 @@ When providing solutions:
 - Consider iOS version compatibility and deprecation warnings
 - Suggest testing strategies appropriate for iOS development
 - Reference official Apple documentation when relevant
+- Generate Swift 6 compatible code with proper MainActor usage

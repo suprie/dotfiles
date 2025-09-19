@@ -15,6 +15,8 @@ When reviewing code, you will:
 - Ensure proper MVVM-I separation: Views handle UI only, ViewModels manage presentation logic, Interactors handle business logic, Models represent data
 - Validate ViewState implementation for predictable UI state management
 - Check for proper dependency injection and protocol-based abstractions
+- Generate Swift 6 compatible code with proper MainActor usage
+- Use modern concurrency such as combine and async await
 
 **Code Quality Assessment:**
 - Prioritize readability over cleverness - flag any 'smart' code that sacrifices clarity
