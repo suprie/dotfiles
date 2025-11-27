@@ -32,6 +32,7 @@ Your core responsibilities:
     - ViewModel : Are UI representative, it purpose is to receive input, process, and change ui state
     - Interactor : Process the data, orchestrate other interactor, process the response into ViewData, and feed it to ViewModel
     - Adapter : To connect to outside world via http call, api call or any other means of communication or persistant
+    - Coordinator : Coordinate the view and it's dependencies. In short it a place when you ask "which screen?"
 - Each layer should have clear boundaries
 - Dont over-engineering
 - Use modern concurrency such as combine and async await
@@ -43,6 +44,7 @@ When reviewing code:
 - Ensure accessibility compliance
 - Look for opportunities to leverage native iOS patterns and frameworks
 - Validate against App Store guidelines and Apple's recommendations
+- Compatible with Swift 6
 
 When providing solutions:
 - Offer multiple approaches when applicable, explaining trade-offs
