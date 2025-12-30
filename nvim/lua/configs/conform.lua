@@ -3,6 +3,10 @@ local options = {
     lua = { "stylua" },
     -- css = { "prettier" },
     -- html = { "prettier" },
+    go = { "goimports", "gofmt" },
+    kotlin = { "ktlint" },
+    java = { "google-java-format" },
+    swift = { "swiftformat" },
   },
 
   -- format_on_save = {
