@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vim/Neovim Cheatsheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #00d9ff;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 0.7rem;
+            margin-bottom: 12px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .section h2 {
+            color: #ff6b6b;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        .section.go h2 { color: #00ADD8; border-color: rgba(0, 173, 216, 0.3); }
+        .section.swift h2 { color: #FA7343; border-color: rgba(250, 115, 67, 0.3); }
+        .section.kotlin h2 { color: #A97BFF; border-color: rgba(169, 123, 255, 0.3); }
+        .section.fzf h2 { color: #4EC9B0; border-color: rgba(78, 201, 176, 0.3); }
+        .section.lsp h2 { color: #DCDCAA; border-color: rgba(220, 220, 170, 0.3); }
+        .section.nvchad h2 { color: #C586C0; border-color: rgba(197, 134, 192, 0.3); }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.7rem;
+        }
+        td {
+            padding: 2px 3px;
+            vertical-align: top;
+        }
+        td:first-child {
+            width: 45%;
+            white-space: nowrap;
+        }
+        .key {
+            background: linear-gradient(145deg, #2d2d44, #1f1f33);
+            color: #ffd93d;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 0.65rem;
+            display: inline-block;
+            border: 1px solid #444;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        .desc {
+            color: #b8b8b8;
+        }
+        .leader {
+            color: #4EC9B0;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.2rem; }
+            .container { grid-template-columns: 1fr 1fr; }
+        }
+        @media (min-width: 1400px) {
+            .container { grid-template-columns: repeat(6, 1fr); }
+        }
+        @media (min-width: 1800px) {
+            .container { grid-template-columns: repeat(7, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Vim/Neovim + NvChad Cheatsheet</h1>
+    <p class="subtitle">Leader key: <span class="key">Space</span> | Go, Swift, Kotlin, FZF, LSP</p>
+    <div class="container">
+        <!-- Basic Vim -->
+        <div class="section">
+            <h2>Modes</h2>
+            <table>
+                <tr><td><span class="key">i</span></td><td class="desc">Insert before cursor</td></tr>
+                <tr><td><span class="key">a</span></td><td class="desc">Insert after cursor</td></tr>
+                <tr><td><span class="key">I</span></td><td class="desc">Insert at line start</td></tr>
+                <tr><td><span class="key">A</span></td><td class="desc">Insert at line end</td></tr>
+                <tr><td><span class="key">o</span> / <span class="key">O</span></td><td class="desc">New line below/above</td></tr>
+                <tr><td><span class="key">v</span> / <span class="key">V</span></td><td class="desc">Visual / Line mode</td></tr>
+                <tr><td><span class="key">Ctrl+v</span></td><td class="desc">Visual block</td></tr>
+                <tr><td><span class="key">Esc</span> / <span class="key">jk</span></td><td class="desc">Normal mode</td></tr>
+                <tr><td><span class="key">;</span></td><td class="desc">Command mode</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Navigation</h2>
+            <table>
+                <tr><td><span class="key">h j k l</span></td><td class="desc">Left/Down/Up/Right</td></tr>
+                <tr><td><span class="key">w</span> / <span class="key">b</span></td><td class="desc">Next/Prev word</td></tr>
+                <tr><td><span class="key">e</span></td><td class="desc">End of word</td></tr>
+                <tr><td><span class="key">0</span> / <span class="key">$</span></td><td class="desc">Line start/end</td></tr>
+                <tr><td><span class="key">^</span></td><td class="desc">First non-blank</td></tr>
+                <tr><td><span class="key">gg</span> / <span class="key">G</span></td><td class="desc">File start/end</td></tr>
+                <tr><td><span class="key">Ctrl+d/u</span></td><td class="desc">Half page down/up</td></tr>
+                <tr><td><span class="key">Ctrl+f/b</span></td><td class="desc">Full page down/up</td></tr>
+                <tr><td><span class="key">%</span></td><td class="desc">Match bracket</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Editing</h2>
+            <table>
+                <tr><td><span class="key">x</span></td><td class="desc">Delete char</td></tr>
+                <tr><td><span class="key">dd</span> / <span class="key">yy</span></td><td class="desc">Delete/Yank line</td></tr>
+                <tr><td><span class="key">dw</span> / <span class="key">yw</span></td><td class="desc">Delete/Yank word</td></tr>
+                <tr><td><span class="key">d$</span> / <span class="key">D</span></td><td class="desc">Delete to end</td></tr>
+                <tr><td><span class="key">p</span> / <span class="key">P</span></td><td class="desc">Paste after/before</td></tr>
+                <tr><td><span class="key">u</span> / <span class="key">Ctrl+r</span></td><td class="desc">Undo/Redo</td></tr>
+                <tr><td><span class="key">.</span></td><td class="desc">Repeat last cmd</td></tr>
+                <tr><td><span class="key">J</span></td><td class="desc">Join lines</td></tr>
+                <tr><td><span class="key">&gt;&gt;</span> / <span class="key">&lt;&lt;</span></td><td class="desc">Indent/Unindent</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Change & Replace</h2>
+            <table>
+                <tr><td><span class="key">r</span> / <span class="key">R</span></td><td class="desc">Replace char/mode</td></tr>
+                <tr><td><span class="key">cw</span> / <span class="key">cc</span></td><td class="desc">Change word/line</td></tr>
+                <tr><td><span class="key">c$</span> / <span class="key">C</span></td><td class="desc">Change to end</td></tr>
+                <tr><td><span class="key">ci"</span></td><td class="desc">Change inside ""</td></tr>
+                <tr><td><span class="key">ca{</span></td><td class="desc">Change around {}</td></tr>
+                <tr><td><span class="key">~</span></td><td class="desc">Toggle case</td></tr>
+                <tr><td><span class="key">gU</span> / <span class="key">gu</span></td><td class="desc">Upper/Lower case</td></tr>
+                <tr><td><span class="key">s</span> / <span class="key">S</span></td><td class="desc">Substitute char/line</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Search & Replace</h2>
+            <table>
+                <tr><td><span class="key">/</span> / <span class="key">?</span></td><td class="desc">Search fwd/back</td></tr>
+                <tr><td><span class="key">n</span> / <span class="key">N</span></td><td class="desc">Next/Prev match</td></tr>
+                <tr><td><span class="key">*</span> / <span class="key">#</span></td><td class="desc">Search word fwd/back</td></tr>
+                <tr><td><span class="key">:%s/a/b/g</span></td><td class="desc">Replace all</td></tr>
+                <tr><td><span class="key">:%s/a/b/gc</span></td><td class="desc">Replace confirm</td></tr>
+                <tr><td><span class="key">:noh</span></td><td class="desc">Clear highlights</td></tr>
+                <tr><td><span class="key">f</span><span class="key">x</span></td><td class="desc">Find char x forward</td></tr>
+                <tr><td><span class="key">t</span><span class="key">x</span></td><td class="desc">Till char x forward</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Text Objects</h2>
+            <table>
+                <tr><td><span class="key">iw</span> / <span class="key">aw</span></td><td class="desc">Inner/A word</td></tr>
+                <tr><td><span class="key">is</span> / <span class="key">as</span></td><td class="desc">Inner/A sentence</td></tr>
+                <tr><td><span class="key">ip</span> / <span class="key">ap</span></td><td class="desc">Inner/A paragraph</td></tr>
+                <tr><td><span class="key">i"</span> / <span class="key">a"</span></td><td class="desc">Inner/A quotes</td></tr>
+                <tr><td><span class="key">i(</span> / <span class="key">a(</span></td><td class="desc">Inner/A parens</td></tr>
+                <tr><td><span class="key">i{</span> / <span class="key">a{</span></td><td class="desc">Inner/A braces</td></tr>
+                <tr><td><span class="key">i[</span> / <span class="key">a[</span></td><td class="desc">Inner/A brackets</td></tr>
+                <tr><td><span class="key">it</span> / <span class="key">at</span></td><td class="desc">Inner/A tag</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Files & Buffers</h2>
+            <table>
+                <tr><td><span class="key">:w</span> / <span class="key">:q</span></td><td class="desc">Save/Quit</td></tr>
+                <tr><td><span class="key">:wq</span> / <span class="key">:x</span></td><td class="desc">Save & quit</td></tr>
+                <tr><td><span class="key">:q!</span></td><td class="desc">Force quit</td></tr>
+                <tr><td><span class="key">:e file</span></td><td class="desc">Open file</td></tr>
+                <tr><td><span class="key">:bn</span> / <span class="key">:bp</span></td><td class="desc">Next/Prev buffer</td></tr>
+                <tr><td><span class="key">:bd</span></td><td class="desc">Close buffer</td></tr>
+                <tr><td><span class="key">:ls</span></td><td class="desc">List buffers</td></tr>
+                <tr><td><span class="key">Ctrl+^</span></td><td class="desc">Alternate buffer</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Windows & Tabs</h2>
+            <table>
+                <tr><td><span class="key">:sp</span> / <span class="key">:vsp</span></td><td class="desc">H/V split</td></tr>
+                <tr><td><span class="key">Ctrl+w h/j/k/l</span></td><td class="desc">Navigate splits</td></tr>
+                <tr><td><span class="key">Ctrl+w =</span></td><td class="desc">Equal size</td></tr>
+                <tr><td><span class="key">Ctrl+w _</span> / <span class="key">|</span></td><td class="desc">Max height/width</td></tr>
+                <tr><td><span class="key">Ctrl+w q</span></td><td class="desc">Close window</td></tr>
+                <tr><td><span class="key">:tabnew</span></td><td class="desc">New tab</td></tr>
+                <tr><td><span class="key">gt</span> / <span class="key">gT</span></td><td class="desc">Next/Prev tab</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Marks & Jumps</h2>
+            <table>
+                <tr><td><span class="key">ma</span></td><td class="desc">Set mark 'a'</td></tr>
+                <tr><td><span class="key">'a</span> / <span class="key">`a</span></td><td class="desc">Jump to mark</td></tr>
+                <tr><td><span class="key">:marks</span></td><td class="desc">List marks</td></tr>
+                <tr><td><span class="key">Ctrl+o</span> / <span class="key">Ctrl+i</span></td><td class="desc">Jump back/fwd</td></tr>
+                <tr><td><span class="key">''</span></td><td class="desc">Last jump position</td></tr>
+                <tr><td><span class="key">'.</span></td><td class="desc">Last edit position</td></tr>
+                <tr><td><span class="key">gf</span></td><td class="desc">Go to file</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Macros & Registers</h2>
+            <table>
+                <tr><td><span class="key">qa</span></td><td class="desc">Record macro 'a'</td></tr>
+                <tr><td><span class="key">q</span></td><td class="desc">Stop recording</td></tr>
+                <tr><td><span class="key">@a</span> / <span class="key">@@</span></td><td class="desc">Play macro/last</td></tr>
+                <tr><td><span class="key">"ay</span></td><td class="desc">Yank to reg 'a'</td></tr>
+                <tr><td><span class="key">"ap</span></td><td class="desc">Paste from reg 'a'</td></tr>
+                <tr><td><span class="key">:reg</span></td><td class="desc">Show registers</td></tr>
+                <tr><td><span class="key">"0p</span></td><td class="desc">Paste last yank</td></tr>
+                <tr><td><span class="key">"+y</span> / <span class="key">"+p</span></td><td class="desc">System clipboard</td></tr>
+            </table>
+        </div>
+
+        <!-- NvChad Specific -->
+        <div class="section nvchad">
+            <h2>NvChad General</h2>
+            <table>
+                <tr><td><span class="key">Space</span><span class="key">ch</span></td><td class="desc">Cheatsheet</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">th</span></td><td class="desc">Theme picker</td></tr>
+                <tr><td><span class="key">Tab</span> / <span class="key">S-Tab</span></td><td class="desc">Next/Prev buffer</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">x</span></td><td class="desc">Close buffer</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">b</span></td><td class="desc">New buffer</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">n</span></td><td class="desc">Line number toggle</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">rn</span></td><td class="desc">Relative number</td></tr>
+                <tr><td><span class="key">Ctrl+n</span></td><td class="desc">Toggle NvimTree</td></tr>
+            </table>
+        </div>
+
+        <div class="section nvchad">
+            <h2>NvChad Telescope</h2>
+            <table>
+                <tr><td><span class="key">Space</span><span class="key">fw</span></td><td class="desc">Live grep</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">gt</span></td><td class="desc">Git status</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">cm</span></td><td class="desc">Git commits</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fo</span></td><td class="desc">Old files</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fz</span></td><td class="desc">Find in buffer</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">ma</span></td><td class="desc">Bookmarks</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">pt</span></td><td class="desc">Pick hidden term</td></tr>
+            </table>
+        </div>
+
+        <div class="section nvchad">
+            <h2>NvChad Terminal</h2>
+            <table>
+                <tr><td><span class="key">Space</span><span class="key">h</span></td><td class="desc">Horizontal terminal</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">v</span></td><td class="desc">Vertical terminal</td></tr>
+                <tr><td><span class="key">Alt+h/v</span></td><td class="desc">Toggle h/v term</td></tr>
+                <tr><td><span class="key">Alt+i</span></td><td class="desc">Toggle float term</td></tr>
+                <tr><td><span class="key">Ctrl+x</span></td><td class="desc">Exit term mode</td></tr>
+            </table>
+        </div>
+
+        <div class="section nvchad">
+            <h2>NvimTree</h2>
+            <table>
+                <tr><td><span class="key">Ctrl+n</span></td><td class="desc">Toggle tree</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">e</span></td><td class="desc">Focus tree</td></tr>
+                <tr><td><span class="key">a</span></td><td class="desc">Create file/folder</td></tr>
+                <tr><td><span class="key">r</span></td><td class="desc">Rename</td></tr>
+                <tr><td><span class="key">d</span></td><td class="desc">Delete</td></tr>
+                <tr><td><span class="key">c</span> / <span class="key">x</span></td><td class="desc">Copy/Cut</td></tr>
+                <tr><td><span class="key">p</span></td><td class="desc">Paste</td></tr>
+                <tr><td><span class="key">H</span></td><td class="desc">Toggle hidden</td></tr>
+            </table>
+        </div>
+
+        <!-- FZF -->
+        <div class="section fzf">
+            <h2>FZF (Custom)</h2>
+            <table>
+                <tr><td><span class="key">Space</span><span class="key">ff</span></td><td class="desc">Find files</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fg</span></td><td class="desc">Ripgrep search</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fb</span></td><td class="desc">Buffers</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fh</span></td><td class="desc">File history</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fc</span></td><td class="desc">Git commits</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fs</span></td><td class="desc">Git status</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fl</span></td><td class="desc">Lines in buffers</td></tr>
+                <tr><td><span class="key">Ctrl+p</span></td><td class="desc">Find files</td></tr>
+            </table>
+        </div>
+
+        <div class="section fzf">
+            <h2>FZF Window</h2>
+            <table>
+                <tr><td><span class="key">Ctrl+j/k</span></td><td class="desc">Navigate results</td></tr>
+                <tr><td><span class="key">Enter</span></td><td class="desc">Select item</td></tr>
+                <tr><td><span class="key">Ctrl+t</span></td><td class="desc">Open in new tab</td></tr>
+                <tr><td><span class="key">Ctrl+x</span></td><td class="desc">Open in split</td></tr>
+                <tr><td><span class="key">Ctrl+v</span></td><td class="desc">Open in vsplit</td></tr>
+                <tr><td><span class="key">Tab</span></td><td class="desc">Multi-select</td></tr>
+                <tr><td><span class="key">Esc</span></td><td class="desc">Close FZF</td></tr>
+            </table>
+        </div>
+
+        <!-- LSP -->
+        <div class="section lsp">
+            <h2>LSP Navigation</h2>
+            <table>
+                <tr><td><span class="key">gd</span></td><td class="desc">Go to definition</td></tr>
+                <tr><td><span class="key">gD</span></td><td class="desc">Go to declaration</td></tr>
+                <tr><td><span class="key">gi</span></td><td class="desc">Go to implementation</td></tr>
+                <tr><td><span class="key">gr</span></td><td class="desc">Go to references</td></tr>
+                <tr><td><span class="key">K</span></td><td class="desc">Hover documentation</td></tr>
+                <tr><td><span class="key">Ctrl+k</span></td><td class="desc">Signature help</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">D</span></td><td class="desc">Type definition</td></tr>
+            </table>
+        </div>
+
+        <div class="section lsp">
+            <h2>LSP Actions</h2>
+            <table>
+                <tr><td><span class="key">Space</span><span class="key">ca</span></td><td class="desc">Code action</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">ra</span></td><td class="desc">Rename symbol</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fm</span></td><td class="desc">Format file</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">wa</span></td><td class="desc">Add workspace</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">wr</span></td><td class="desc">Remove workspace</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">wl</span></td><td class="desc">List workspaces</td></tr>
+            </table>
+        </div>
+
+        <div class="section lsp">
+            <h2>LSP Diagnostics</h2>
+            <table>
+                <tr><td><span class="key">[d</span> / <span class="key">]d</span></td><td class="desc">Prev/Next diagnostic</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">q</span></td><td class="desc">Diagnostic list</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">lf</span></td><td class="desc">Float diagnostic</td></tr>
+                <tr><td><span class="key">:LspInfo</span></td><td class="desc">LSP info</td></tr>
+                <tr><td><span class="key">:LspRestart</span></td><td class="desc">Restart LSP</td></tr>
+            </table>
+        </div>
+
+        <!-- Go -->
+        <div class="section go">
+            <h2>Go (gopls)</h2>
+            <table>
+                <tr><td><span class="key">gd</span></td><td class="desc">Go to definition</td></tr>
+                <tr><td><span class="key">K</span></td><td class="desc">Show docs</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">ca</span></td><td class="desc">Code actions</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fm</span></td><td class="desc">goimports + gofmt</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">ra</span></td><td class="desc">Rename</td></tr>
+                <tr><td><span class="key">gi</span></td><td class="desc">Go to impl</td></tr>
+                <tr><td><span class="key">gr</span></td><td class="desc">Find references</td></tr>
+            </table>
+        </div>
+
+        <div class="section go">
+            <h2>Go Commands</h2>
+            <table>
+                <tr><td><span class="key">:!go run %</span></td><td class="desc">Run current file</td></tr>
+                <tr><td><span class="key">:!go build</span></td><td class="desc">Build package</td></tr>
+                <tr><td><span class="key">:!go test</span></td><td class="desc">Run tests</td></tr>
+                <tr><td><span class="key">:!go mod tidy</span></td><td class="desc">Tidy modules</td></tr>
+                <tr><td><span class="key">:!go fmt %</span></td><td class="desc">Format file</td></tr>
+                <tr><td><span class="key">:!go vet</span></td><td class="desc">Vet package</td></tr>
+            </table>
+        </div>
+
+        <!-- Swift -->
+        <div class="section swift">
+            <h2>Swift (sourcekit)</h2>
+            <table>
+                <tr><td><span class="key">gd</span></td><td class="desc">Go to definition</td></tr>
+                <tr><td><span class="key">K</span></td><td class="desc">Show docs</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">ca</span></td><td class="desc">Code actions</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fm</span></td><td class="desc">swiftformat</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">ra</span></td><td class="desc">Rename</td></tr>
+                <tr><td><span class="key">gi</span></td><td class="desc">Go to impl</td></tr>
+                <tr><td><span class="key">gr</span></td><td class="desc">Find references</td></tr>
+            </table>
+        </div>
+
+        <div class="section swift">
+            <h2>Swift Commands</h2>
+            <table>
+                <tr><td><span class="key">:!swift %</span></td><td class="desc">Run script</td></tr>
+                <tr><td><span class="key">:!swift build</span></td><td class="desc">Build package</td></tr>
+                <tr><td><span class="key">:!swift test</span></td><td class="desc">Run tests</td></tr>
+                <tr><td><span class="key">:!swift run</span></td><td class="desc">Run executable</td></tr>
+                <tr><td><span class="key">:!swiftformat %</span></td><td class="desc">Format file</td></tr>
+                <tr><td><span class="key">:!swiftlint</span></td><td class="desc">Lint code</td></tr>
+            </table>
+        </div>
+
+        <!-- Kotlin -->
+        <div class="section kotlin">
+            <h2>Kotlin (kotlin_ls)</h2>
+            <table>
+                <tr><td><span class="key">gd</span></td><td class="desc">Go to definition</td></tr>
+                <tr><td><span class="key">K</span></td><td class="desc">Show docs</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">ca</span></td><td class="desc">Code actions</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">fm</span></td><td class="desc">ktlint format</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">ra</span></td><td class="desc">Rename</td></tr>
+                <tr><td><span class="key">gi</span></td><td class="desc">Go to impl</td></tr>
+                <tr><td><span class="key">gr</span></td><td class="desc">Find references</td></tr>
+            </table>
+        </div>
+
+        <div class="section kotlin">
+            <h2>Kotlin Commands</h2>
+            <table>
+                <tr><td><span class="key">:!kotlinc %</span></td><td class="desc">Compile file</td></tr>
+                <tr><td><span class="key">:!./gradlew build</span></td><td class="desc">Gradle build</td></tr>
+                <tr><td><span class="key">:!./gradlew test</span></td><td class="desc">Gradle test</td></tr>
+                <tr><td><span class="key">:!./gradlew run</span></td><td class="desc">Gradle run</td></tr>
+                <tr><td><span class="key">:!ktlint %</span></td><td class="desc">Lint file</td></tr>
+                <tr><td><span class="key">:!ktlint -F %</span></td><td class="desc">Auto-fix lint</td></tr>
+            </table>
+        </div>
+
+        <!-- Git & Misc -->
+        <div class="section nvchad">
+            <h2>Git (gitsigns)</h2>
+            <table>
+                <tr><td><span class="key">]c</span> / <span class="key">[c</span></td><td class="desc">Next/Prev hunk</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">rh</span></td><td class="desc">Reset hunk</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">ph</span></td><td class="desc">Preview hunk</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">gb</span></td><td class="desc">Blame line</td></tr>
+                <tr><td><span class="key">Space</span><span class="key">td</span></td><td class="desc">Toggle deleted</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Completion (nvim-cmp)</h2>
+            <table>
+                <tr><td><span class="key">Ctrl+Space</span></td><td class="desc">Trigger completion</td></tr>
+                <tr><td><span class="key">Ctrl+n/p</span></td><td class="desc">Next/Prev item</td></tr>
+                <tr><td><span class="key">Ctrl+e</span></td><td class="desc">Close menu</td></tr>
+                <tr><td><span class="key">Enter</span></td><td class="desc">Confirm selection</td></tr>
+                <tr><td><span class="key">Tab</span></td><td class="desc">Next/Expand snippet</td></tr>
+                <tr><td><span class="key">Ctrl+d/f</span></td><td class="desc">Scroll docs</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Comment (Comment.nvim)</h2>
+            <table>
+                <tr><td><span class="key">gcc</span></td><td class="desc">Toggle line comment</td></tr>
+                <tr><td><span class="key">gbc</span></td><td class="desc">Toggle block comment</td></tr>
+                <tr><td><span class="key">gc</span> (visual)</td><td class="desc">Comment selection</td></tr>
+                <tr><td><span class="key">gb</span> (visual)</td><td class="desc">Block comment sel</td></tr>
+                <tr><td><span class="key">gcO</span></td><td class="desc">Comment above</td></tr>
+                <tr><td><span class="key">gco</span></td><td class="desc">Comment below</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Useful Commands</h2>
+            <table>
+                <tr><td><span class="key">:Lazy</span></td><td class="desc">Plugin manager</td></tr>
+                <tr><td><span class="key">:Mason</span></td><td class="desc">LSP installer</td></tr>
+                <tr><td><span class="key">:checkhealth</span></td><td class="desc">Health check</td></tr>
+                <tr><td><span class="key">:!cmd</span></td><td class="desc">Run shell cmd</td></tr>
+                <tr><td><span class="key">:r !cmd</span></td><td class="desc">Insert cmd output</td></tr>
+                <tr><td><span class="key">gg=G</span></td><td class="desc">Indent whole file</td></tr>
+                <tr><td><span class="key">Ctrl+a/x</span></td><td class="desc">Inc/Dec number</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

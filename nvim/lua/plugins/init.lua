@@ -29,4 +29,27 @@ return {
       },
     },
   },
+
+  -- fzf-native for telescope (faster fuzzy finding)
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    lazy = false,
+    config = function()
+      require("telescope").load_extension("fzf")
+    end,
+  },
+
+  -- fzf.vim for standalone fzf integration
+  {
+    "junegunn/fzf",
+    build = "./install --bin",
+  },
+  {
+    "junegunn/fzf.vim",
+    dependencies = { "junegunn/fzf" },
+    config = function()
+      vim.g.fzf_layout = { window = { width = 0.9, height = 0.8 } }
+    end,
+  },
 }
