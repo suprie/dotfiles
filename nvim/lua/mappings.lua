@@ -18,3 +18,7 @@ map("n", "<leader>fc", "<cmd>Commits<cr>", { desc = "FZF git commits" })
 map("n", "<leader>fs", "<cmd>GFiles?<cr>", { desc = "FZF git status" })
 map("n", "<leader>fl", "<cmd>Lines<cr>", { desc = "FZF lines in buffers" })
 map("n", "<C-p>", "<cmd>Files<cr>", { desc = "FZF find files (Ctrl+P)" })
+
+-- Colemak-DH / QWERTY toggle
+local colemak = require("configs.colemak")
+map("n", "<leader>tc", colemak.toggle, { desc = "Toggle Colemak-DH / QWERTY" })

@@ -1,0 +1,7 @@
+# Appearance
+font-family = "Hasklug Nerd Font"
+theme = "Catppuccin Mocha"
+cursor-style = "block"
+cursor-style-blink = true
+background-opacity = 0.95
+
