@@ -4,6 +4,7 @@ local servers = {
   "html",
   "cssls",
   "gopls",           -- Go
+  "rust_analyzer",   -- Rust
   "kotlin_language_server", -- Kotlin
   "jdtls",           -- Java
   "sourcekit",       -- Swift (built-in with Xcode on macOS)

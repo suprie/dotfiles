@@ -4,6 +4,7 @@ local options = {
     -- css = { "prettier" },
     -- html = { "prettier" },
     go = { "goimports", "gofmt" },
+    rust = { "rustfmt" },
     kotlin = { "ktlint" },
     java = { "google-java-format" },
     swift = { "swiftformat" },

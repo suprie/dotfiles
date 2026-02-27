@@ -19,6 +19,31 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
+      pcall(function()
+        local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+        local function force_main_branch(lang, url)
+          if parser_configs[lang] and parser_configs[lang].install_info then
+            if url then
+              parser_configs[lang].install_info.url = url
+            end
+            parser_configs[lang].install_info.branch = "main"
+            parser_configs[lang].install_info.revision = nil
+          end
+        end
+
+        force_main_branch("lua", "https://github.com/tree-sitter-grammars/tree-sitter-lua")
+        force_main_branch("gomod")
+        force_main_branch("kotlin")
+      end)
+
+      local function add_unique(list, items)
+        for _, item in ipairs(items) do
+          if not vim.tbl_contains(list, item) then
+            table.insert(list, item)
+          end
+        end
+      end
+
       -- Load base46 highlights (required for syntax coloring)
       pcall(function()
         dofile(vim.g.base46_cache .. "syntax")
@@ -26,12 +51,21 @@ return {
       end)
 
       opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, {
+      add_unique(opts.ensure_installed, {
         "go", "gomod", "gosum", "gowork",  -- Go
+        "rust", "toml",                     -- Rust
         "kotlin",                           -- Kotlin
         "java",                             -- Java
-        "swift",                            -- Swift
       })
+
+      local has_tree_sitter_cli = vim.fn.executable "tree-sitter" == 1
+      if has_tree_sitter_cli then
+        add_unique(opts.ensure_installed, { "swift" }) -- Swift parser generation needs tree-sitter CLI.
+      else
+        opts.ignore_install = opts.ignore_install or {}
+        add_unique(opts.ignore_install, { "swift" })
+      end
+
       return opts
     end,
   },
@@ -54,6 +88,7 @@ return {
   {
     "junegunn/fzf.vim",
     dependencies = { "junegunn/fzf" },
+    lazy = false,
     config = function()
       vim.g.fzf_layout = { window = { width = 0.9, height = 0.8 } }
     end,
