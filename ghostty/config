@@ -3,5 +3,6 @@ font-family = "Hasklug Nerd Font"
 theme = "Catppuccin Mocha"
 cursor-style = "block"
 cursor-style-blink = true
-background-opacity = 0.95
+background-opacity = 0.50
+background-blur = macos-glass-regular
 
