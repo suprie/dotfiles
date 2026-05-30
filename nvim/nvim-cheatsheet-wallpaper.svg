@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440" role="img" aria-labelledby="title desc">
+  <title id="title">Compact NVIM Cheatsheet Wallpaper</title>
+  <desc id="desc">Compact Neovim and NvChad navigation cheatsheet wallpaper.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11111b"/>
+      <stop offset="0.58" stop-color="#181825"/>
+      <stop offset="1" stop-color="#1e1e2e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000000" flood-opacity="0.30"/>
+    </filter>
+    <style>
+      .mono { font-family: "JetBrains Mono", "SFMono-Regular", "Menlo", "Consolas", monospace; }
+      .sans { font-family: "Inter", "SF Pro Display", "Segoe UI", sans-serif; }
+      .title { fill: #cdd6f4; font-size: 72px; font-weight: 850; letter-spacing: 0; }
+      .subtitle { fill: #a6adc8; font-size: 27px; font-weight: 500; letter-spacing: 0; }
+      .section { fill: #f5c2e7; font-size: 29px; font-weight: 850; letter-spacing: 0; }
+      .key { fill: #89b4fa; font-size: 24px; font-weight: 850; letter-spacing: 0; }
+      .text { fill: #cdd6f4; font-size: 23px; font-weight: 520; letter-spacing: 0; }
+      .muted { fill: #a6adc8; font-size: 20px; font-weight: 500; letter-spacing: 0; }
+      .tiny { fill: #9399b2; font-size: 18px; font-weight: 520; letter-spacing: 0; }
+      .code { fill: #cdd6f4; font-size: 24px; font-weight: 700; letter-spacing: 0; }
+      .green { fill: #a6e3a1; }
+      .yellow { fill: #f9e2af; }
+      .peach { fill: #fab387; }
+      .red { fill: #f38ba8; }
+      .mauve { fill: #cba6f7; }
+      .teal { fill: #94e2d5; }
+      .card { fill: #181825; stroke: #313244; stroke-width: 2; rx: 20; filter: url(#shadow); }
+      .soft { fill: #1e1e2e; stroke: #45475a; stroke-width: 1.5; rx: 14; }
+      .chip { fill: #313244; rx: 10; }
+      .line { stroke: #45475a; stroke-width: 2; }
+      .accent { stroke: #89b4fa; stroke-width: 4; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <rect width="2560" height="1440" fill="url(#bg)"/>
+  <path d="M0 1210 C360 1140 560 1320 930 1235 C1290 1155 1500 1285 1880 1195 C2170 1128 2365 1185 2560 1116 L2560 1440 L0 1440 Z" fill="#11111b" opacity="0.75"/>
+  <path d="M1865 0 L2560 0 L2560 505 C2390 405 2265 260 2060 265 C1955 268 1900 185 1865 0 Z" fill="#313244" opacity="0.24"/>
+
+  <g transform="translate(110 76)">
+    <text class="sans title" x="0" y="0" dominant-baseline="hanging">NVIM Navigation Cheatsheet</text>
+    <text class="sans subtitle" x="0" y="96">Compact wallpaper for your NvChad setup • Leader key = Space • Theme = Catppuccin</text>
+    <rect class="chip" x="1780" y="4" width="450" height="70"/>
+    <text class="mono key" x="1810" y="49">leader: &lt;Space&gt;</text>
+    <text class="mono key green" x="2040" y="49">exit: jk</text>
+  </g>
+
+  <g transform="translate(110 215)">
+    <rect class="card" width="720" height="370"/>
+    <text class="sans section" x="34" y="50">Cursor Movement</text>
+    <text class="mono muted" x="34" y="90">Normal mode essentials</text>
+    <line class="line" x1="34" y1="118" x2="686" y2="118"/>
+    <text class="mono key" x="44" y="166">h j k l</text><text class="mono text" x="250" y="166">left / down / up / right</text>
+    <text class="mono key" x="44" y="212">0 / ^ / $</text><text class="mono text" x="250" y="212">line start / first char / end</text>
+    <text class="mono key" x="44" y="258">gg / G</text><text class="mono text" x="250" y="258">top / bottom of file</text>
+    <text class="mono key" x="44" y="304">Ctrl+d/u</text><text class="mono text" x="250" y="304">half-page down / up</text>
+    <text class="mono key" x="44" y="350">Ctrl+f/b</text><text class="mono text" x="250" y="350">page down / up</text>
+  </g>
+
+  <g transform="translate(920 215)">
+    <rect class="card" width="720" height="370"/>
+    <text class="sans section" x="34" y="50">Words + Code Objects</text>
+    <text class="mono muted" x="34" y="90">Move by syntax-like chunks</text>
+    <line class="line" x1="34" y1="118" x2="686" y2="118"/>
+    <text class="mono key" x="44" y="166">w / b / e</text><text class="mono text" x="250" y="166">next word / previous / word end</text>
+    <text class="mono key" x="44" y="212">W / B / E</text><text class="mono text" x="250" y="212">WORD movement by spaces</text>
+    <text class="mono key" x="44" y="258">%</text><text class="mono text" x="250" y="258">matching pair: (), {}, []</text>
+    <text class="mono key" x="44" y="304">{ / }</text><text class="mono text" x="250" y="304">previous / next paragraph</text>
+    <text class="mono key" x="44" y="350">gd / gD</text><text class="mono text" x="250" y="350">definition / declaration</text>
+  </g>
+
+  <g transform="translate(1730 215)">
+    <rect class="card" width="720" height="370"/>
+    <text class="sans section" x="34" y="50">Search + Jump</text>
+    <text class="mono muted" x="34" y="90">Find text and repeat motion</text>
+    <line class="line" x1="34" y1="118" x2="686" y2="118"/>
+    <text class="mono key" x="44" y="166">/text</text><text class="mono text" x="250" y="166">search forward</text>
+    <text class="mono key" x="44" y="212">?text</text><text class="mono text" x="250" y="212">search backward</text>
+    <text class="mono key" x="44" y="258">n / N</text><text class="mono text" x="250" y="258">next / previous match</text>
+    <text class="mono key" x="44" y="304">* / #</text><text class="mono text" x="250" y="304">word under cursor forward/back</text>
+    <text class="mono key" x="44" y="350">Esc</text><text class="mono text" x="250" y="350">clear search highlight</text>
+  </g>
+
+  <g transform="translate(110 635)">
+    <rect class="card" width="720" height="370"/>
+    <text class="sans section" x="34" y="50">Edit Fast</text>
+    <text class="mono muted" x="34" y="90">Small commands with high mileage</text>
+    <line class="line" x1="34" y1="118" x2="686" y2="118"/>
+    <text class="mono key" x="44" y="166">i / a / A</text><text class="mono text" x="250" y="166">insert / append / append line end</text>
+    <text class="mono key" x="44" y="212">o / O</text><text class="mono text" x="250" y="212">new line below / above</text>
+    <text class="mono key" x="44" y="258">dd / yy / p</text><text class="mono text" x="250" y="258">delete line / yank line / paste</text>
+    <text class="mono key" x="44" y="304">u / Ctrl+r</text><text class="mono text" x="250" y="304">undo / redo</text>
+    <text class="mono key" x="44" y="350">di" / ci"</text><text class="mono text" x="250" y="350">delete / change inside quotes</text>
+  </g>
+
+  <g transform="translate(920 635)">
+    <rect class="card" width="720" height="370"/>
+    <text class="sans section" x="34" y="50">Multi-Cursor Style Edit</text>
+    <text class="mono muted" x="34" y="90">Built-in visual block editing</text>
+    <line class="line" x1="34" y1="118" x2="686" y2="118"/>
+    <text class="mono key" x="44" y="166">Ctrl+v</text><text class="mono text" x="250" y="166">start visual block</text>
+    <text class="mono key" x="44" y="212">j / k</text><text class="mono text" x="250" y="212">extend selection down / up</text>
+    <text class="mono key" x="44" y="258">I text Esc</text><text class="mono text" x="250" y="258">insert before every selected line</text>
+    <text class="mono key" x="44" y="304">A text Esc</text><text class="mono text" x="250" y="304">append after every selected line</text>
+    <text class="mono key" x="44" y="350">c text Esc</text><text class="mono text" x="250" y="350">replace block with same text</text>
+  </g>
+
+  <g transform="translate(1730 635)">
+    <rect class="card" width="720" height="370"/>
+    <text class="sans section" x="34" y="50">Splits + Buffers</text>
+    <text class="mono muted" x="34" y="90">Your NvChad navigation mappings</text>
+    <line class="line" x1="34" y1="118" x2="686" y2="118"/>
+    <text class="mono key" x="44" y="166">Ctrl+h</text><text class="mono text" x="250" y="166">go to left split</text>
+    <text class="mono key" x="44" y="212">Ctrl+j</text><text class="mono text" x="250" y="212">go to lower split</text>
+    <text class="mono key" x="44" y="258">Ctrl+k</text><text class="mono text" x="250" y="258">go to upper split</text>
+    <text class="mono key" x="44" y="304">Ctrl+l</text><text class="mono text" x="250" y="304">go to right split</text>
+    <text class="mono key" x="44" y="350">Tab / S-Tab</text><text class="mono text" x="250" y="350">next / previous buffer</text>
+  </g>
+
+  <g transform="translate(110 1055)">
+    <rect class="card" width="720" height="245"/>
+    <text class="sans section" x="34" y="50">Leader + Finder</text>
+    <text class="mono muted" x="34" y="90">&lt;leader&gt; = Space</text>
+    <line class="line" x1="34" y1="118" x2="686" y2="118"/>
+    <text class="mono key" x="44" y="166">Space ff</text><text class="mono text" x="250" y="166">find files</text>
+    <text class="mono key" x="44" y="212">Space fg</text><text class="mono text" x="250" y="212">live grep project</text>
+  </g>
+
+  <g transform="translate(920 1055)">
+    <rect class="card" width="720" height="245"/>
+    <text class="sans section" x="34" y="50">Nvim Tree</text>
+    <text class="mono muted" x="34" y="90">Explorer shortcuts</text>
+    <line class="line" x1="34" y1="118" x2="686" y2="118"/>
+    <text class="mono key" x="44" y="166">Ctrl+n</text><text class="mono text" x="250" y="166">toggle tree</text>
+    <text class="mono key" x="44" y="212">Space e</text><text class="mono text" x="250" y="212">focus tree</text>
+    <text class="mono key" x="440" y="166">Enter/o</text><text class="mono text" x="560" y="166">open</text>
+    <text class="mono key" x="440" y="212">Ctrl+v/x</text><text class="mono text" x="590" y="212">v/h split</text>
+  </g>
+
+  <g transform="translate(1730 1055)">
+    <rect class="card" width="720" height="245"/>
+    <text class="sans section" x="34" y="50">Quote Example</text>
+    <text class="mono muted" x="34" y="90">Remove only the text between quotes</text>
+    <line class="line" x1="34" y1="118" x2="686" y2="118"/>
+    <rect class="soft" x="44" y="145" width="632" height="46"/>
+    <text class="mono code" x="62" y="176">"things-that need to removed"</text>
+    <path class="accent" d="M78 186 L434 186"/>
+    <text class="mono key" x="44" y="226">di"</text><text class="mono text" x="140" y="226">inside quotes becomes ""</text>
+  </g>
+
+  <g transform="translate(110 1332)">
+    <rect class="soft" x="0" y="0" width="2340" height="60"/>
+    <text class="mono tiny" x="34" y="38">Also useful: ; command mode • Ctrl+s save • Ctrl+c copy whole file • Space / comment • Space fm format • Space cc Claude Chat • Space fb buffers • Space fh help • Space fr recent files</text>
+  </g>
+</svg>
