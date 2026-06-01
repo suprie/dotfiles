@@ -1,14 +1,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = {
-  "html",
-  "cssls",
-  "gopls",           -- Go
-  "rust_analyzer",   -- Rust
-  "kotlin_language_server", -- Kotlin
-  "jdtls",           -- Java
-  "sourcekit",       -- Swift (built-in with Xcode on macOS)
-}
+local servers = { "html", "cssls", "rust_analyzer", "taplo", "ts_ls", "vue_ls", "eslint" }
 vim.lsp.enable(servers)
 
--- read :h vim.lsp.config for changing options of lsp servers 
+-- read :h vim.lsp.config for changing options of lsp servers
