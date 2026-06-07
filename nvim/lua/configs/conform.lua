@@ -8,6 +8,7 @@ local options = {
     typescript = { "prettier" },
     json = { "prettier" },
     rust = { "rustfmt" },
+    go = { "goimports", "gofmt" },
   },
 
   format_on_save = {

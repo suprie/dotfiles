@@ -1,4 +1,12 @@
 return {
+
+  -- Make which-key load eagerly so prefix-key popups never disappear
+  {
+    "folke/which-key.nvim",
+    lazy = false,
+    opts = {},
+  },
+
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
@@ -24,6 +32,7 @@ return {
         "html", "css",
         "rust", "toml",
         "vue", "javascript", "typescript", "tsx", "json",
+        "go",
       },
     },
   },
@@ -164,5 +173,18 @@ return {
       vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "DAP Toggle UI" })
       vim.keymap.set("n", "<leader>dq", dap.terminate, { desc = "DAP Terminate" })
     end,
+  },
+
+  -- Git integration: fugitive + gitsigns
+  {
+    "tpope/vim-fugitive",
+    cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gblame", "Glog" },
+    keys = {
+      { "<leader>gs", "<cmd>Git<cr>", desc = "Git status" },
+      { "<leader>gc", "<cmd>Git commit<cr>", desc = "Git commit" },
+      { "<leader>gb", "<cmd>Git blame<cr>", desc = "Git blame" },
+      { "<leader>gC", "<cmd>Git commit --amend<cr>", desc = "Git amend" },
+      { "<leader>gp", "<cmd>Git push<cr>", desc = "Git push" },
+    },
   },
 }

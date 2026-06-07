@@ -41,7 +41,7 @@
 
   <g transform="translate(110 76)">
     <text class="sans title" x="0" y="0" dominant-baseline="hanging">NVIM Navigation Cheatsheet</text>
-    <text class="sans subtitle" x="0" y="96">Compact wallpaper for your NvChad setup • Space leader • Rust + DAP added</text>
+    <text class="sans subtitle" x="0" y="96">Compact wallpaper for your NvChad setup • Space leader • Rust + DAP + Go added</text>
     <rect class="chip" x="1780" y="4" width="450" height="70"/>
     <text class="mono key" x="1810" y="49">leader: &lt;Space&gt;</text>
     <text class="mono key green" x="2040" y="49">exit: jk</text>
@@ -119,67 +119,68 @@
     <text class="mono key" x="44" y="350">Tab / S-Tab</text><text class="mono text" x="250" y="350">next / previous buffer</text>
   </g>
 
-  <g transform="translate(110 1055)">
-    <rect class="card" width="440" height="245"/>
-    <text class="sans section" x="34" y="50">Leader + Finder</text>
-    <text class="mono muted" x="34" y="90">&lt;leader&gt; = Space</text>
-    <line class="line" x1="34" y1="118" x2="406" y2="118"/>
-    <text class="mono key" x="44" y="150">Space ff</text><text class="mono text" x="196" y="150">files</text>
-    <text class="mono key" x="44" y="180">Space fg</text><text class="mono text" x="196" y="180">live grep</text>
-    <text class="mono key" x="44" y="210">Space fb</text><text class="mono text" x="196" y="210">buffers</text>
-    <text class="mono key" x="300" y="210">fr</text><text class="mono text" x="346" y="210">recent</text>
+  <g transform="translate(130 1055)">
+    <rect class="card" width="350" height="240"/>
+    <text class="sans section" x="28" y="48">Leader + Finder</text>
+    <text class="mono muted" x="28" y="84">&lt;leader&gt; = Space</text>
+    <line class="line" x1="28" y1="110" x2="322" y2="110"/>
+    <text class="mono key" x="38" y="148">ff</text><text class="mono text" x="76" y="148">find files</text>
+    <text class="mono key" x="38" y="183">fg</text><text class="mono text" x="76" y="183">live grep</text>
+    <text class="mono key" x="38" y="218">fb / fr</text><text class="mono text" x="148" y="218">buffers / recent</text>
   </g>
 
-  <g transform="translate(590 1055)">
-    <rect class="card" width="440" height="245"/>
-    <text class="sans section" x="34" y="50">Nvim Tree</text>
-    <text class="mono muted" x="34" y="90">Explorer shortcuts</text>
-    <line class="line" x1="34" y1="118" x2="406" y2="118"/>
-    <text class="mono key" x="44" y="150">Ctrl+n</text><text class="mono text" x="176" y="150">toggle</text>
-    <text class="mono key" x="44" y="180">Space e</text><text class="mono text" x="176" y="180">focus</text>
-    <text class="mono key" x="44" y="210">Enter/o</text><text class="mono text" x="176" y="210">open</text>
-    <text class="mono key" x="282" y="210">C-v/x</text><text class="mono text" x="384" y="210">split</text>
+  <g transform="translate(520 1055)">
+    <rect class="card" width="350" height="240"/>
+    <text class="sans section" x="28" y="48">Nvim Tree</text>
+    <text class="mono muted" x="28" y="84">File explorer</text>
+    <line class="line" x1="28" y1="110" x2="322" y2="110"/>
+    <text class="mono key" x="38" y="148">Ctrl+n</text><text class="mono text" x="140" y="148">toggle tree</text>
+    <text class="mono key" x="38" y="183">Space e</text><text class="mono text" x="140" y="183">focus tree</text>
+    <text class="mono key" x="38" y="218">a / r / d</text><text class="mono text" x="168" y="218">add / rename / del</text>
   </g>
 
-  <g transform="translate(1070 1055)">
-    <rect class="card" width="440" height="245"/>
-    <text class="sans section" x="34" y="50">Quote Example</text>
-    <text class="mono muted" x="34" y="90">Remove text inside quotes</text>
-    <line class="line" x1="34" y1="118" x2="406" y2="118"/>
-    <rect class="soft" x="38" y="138" width="364" height="42"/>
-    <text class="mono code" x="54" y="166">"things-that need to removed"</text>
-    <path class="accent" d="M64 174 L286 174"/>
-    <text class="mono key" x="44" y="218">di"</text><text class="mono text" x="116" y="218">delete inside, leaves ""</text>
+  <g transform="translate(910 1055)">
+    <rect class="card" width="350" height="240"/>
+    <text class="sans section" x="28" y="48">Go LSP</text>
+    <text class="mono muted" x="28" y="84">gopls + goimports</text>
+    <line class="line" x1="28" y1="110" x2="322" y2="110"/>
+    <text class="mono key" x="38" y="148">gd / gD</text><text class="mono text" x="156" y="148">def / decl</text>
+    <text class="mono key" x="38" y="183">K</text><text class="mono text" x="156" y="183">hover docs</text>
+    <text class="mono key" x="38" y="218">gr</text><text class="mono text" x="156" y="218">references</text>
   </g>
 
-  <g transform="translate(1550 1055)">
-    <rect class="card" width="440" height="245"/>
-    <text class="sans section" x="34" y="50">Rust Tools</text>
-    <text class="mono muted" x="34" y="90">rustaceanvim, crates.nvim, taplo</text>
-    <line class="line" x1="34" y1="118" x2="406" y2="118"/>
-    <text class="mono key" x="44" y="154">Space rh</text><text class="mono text" x="196" y="154">hover</text>
-    <text class="mono key" x="44" y="190">Space rr</text><text class="mono text" x="196" y="190">run</text>
-    <text class="mono key" x="44" y="226">Space ra</text><text class="mono text" x="196" y="226">action</text>
-    <text class="mono key" x="300" y="154">rd</text><text class="mono text" x="346" y="154">debug</text>
-    <text class="mono key" x="300" y="190">re</text><text class="mono text" x="346" y="190">macro</text>
-    <text class="mono key" x="300" y="226">ri</text><text class="mono text" x="346" y="226">inlay</text>
+  <g transform="translate(1300 1055)">
+    <rect class="card" width="350" height="240"/>
+    <text class="sans section" x="28" y="48">Rust LSP</text>
+    <text class="mono muted" x="28" y="84">rustaceanvim</text>
+    <line class="line" x1="28" y1="110" x2="322" y2="110"/>
+    <text class="mono key" x="38" y="148">Space rh</text><text class="mono text" x="166" y="148">hover</text>
+    <text class="mono key" x="38" y="183">Space rr</text><text class="mono text" x="166" y="183">runnables</text>
+    <text class="mono key" x="38" y="218">Space ra</text><text class="mono text" x="166" y="218">code actions</text>
   </g>
 
-  <g transform="translate(2030 1055)">
-    <rect class="card" width="440" height="245"/>
-    <text class="sans section" x="34" y="50">Debug DAP</text>
-    <text class="mono muted" x="34" y="90">nvim-dap + dap-ui</text>
-    <line class="line" x1="34" y1="118" x2="406" y2="118"/>
-    <text class="mono key" x="44" y="154">Space db</text><text class="mono text" x="196" y="154">break</text>
-    <text class="mono key" x="44" y="190">Space dc</text><text class="mono text" x="196" y="190">continue</text>
-    <text class="mono key" x="44" y="226">Space du</text><text class="mono text" x="196" y="226">UI</text>
-    <text class="mono key" x="306" y="154">dso</text><text class="mono text" x="366" y="154">over</text>
-    <text class="mono key" x="306" y="190">dsi</text><text class="mono text" x="366" y="190">into</text>
-    <text class="mono key" x="306" y="226">dq</text><text class="mono text" x="366" y="226">quit</text>
+  <g transform="translate(1690 1055)">
+    <rect class="card" width="350" height="240"/>
+    <text class="sans section" x="28" y="48">Git</text>
+    <text class="mono muted" x="28" y="84">fugitive + gitsigns</text>
+    <line class="line" x1="28" y1="110" x2="322" y2="110"/>
+    <text class="mono key" x="38" y="148">Space gs</text><text class="mono text" x="170" y="148">status</text>
+    <text class="mono key" x="38" y="183">Space gc</text><text class="mono text" x="170" y="183">commit</text>
+    <text class="mono key" x="38" y="218">s / cc / X</text><text class="mono text" x="180" y="218">stage / commit / drop</text>
+  </g>
+
+  <g transform="translate(2080 1055)">
+    <rect class="card" width="350" height="240"/>
+    <text class="sans section" x="28" y="48">Debug DAP</text>
+    <text class="mono muted" x="28" y="84">nvim-dap + dap-ui</text>
+    <line class="line" x1="28" y1="110" x2="322" y2="110"/>
+    <text class="mono key" x="38" y="148">Space db</text><text class="mono text" x="170" y="148">breakpoint</text>
+    <text class="mono key" x="38" y="183">Space dc</text><text class="mono text" x="170" y="183">continue</text>
+    <text class="mono key" x="38" y="218">Space du</text><text class="mono text" x="170" y="218">toggle UI</text>
   </g>
 
   <g transform="translate(110 1332)">
     <rect class="soft" x="0" y="0" width="2340" height="60"/>
-    <text class="mono tiny" x="34" y="38">Also useful: ; command mode • Ctrl+s save • Ctrl+c copy whole file • Space / comment • Space fm format • Space cc Claude Chat • Rust: Space rc Cargo, Space rp parent module • DAP: Space dsO step out</text>
+    <text class="mono tiny" x="32" y="38">Also: ; cmd mode • Ctrl+s save • Ctrl+c copy file • Space / comment • Space fm format • Space cc Claude Chat • Rust: Space rc Cargo, Space re expand macro, Space ri inlay hints • Go: auto fmt+import on save • Git: s stage, u unstage, = diff, cc commit, ca amend (inside :Git status window) • DAP: dso over, dsi into, dsO out, dq quit</text>
   </g>
 </svg>
